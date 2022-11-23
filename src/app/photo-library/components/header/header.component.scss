@@ -1,0 +1,20 @@
+.nav-container {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    border: 2px solid gray;
+}
+    
+
+
+.nav-item {
+    width: 10%;
+    padding: 1em;
+    border: 2px solid gray;
+    margin: 2em;
+    display: flex;
+    justify-content: center;
+    text-decoration: none;
+    color: black;
+}
