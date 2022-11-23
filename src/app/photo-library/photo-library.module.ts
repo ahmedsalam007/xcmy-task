@@ -27,7 +27,7 @@ const routes: Route[] = [
   ],
   imports: [
     CommonModule,
-    RouterModule.forChild(routes)
+    RouterModule.forChild(routes),
   ]
 })
 export class PhotoLibraryModule { }

@@ -1,36 +1,12 @@
-<section class="photos-container">
-    <div class="image-container">
-        <a [routerLink]="'photos/1'">
-            <img [src]="'https://picsum.photos/300/300'" />
-        </a>
-    </div>
-    <div class="image-container">
-        <a [routerLink]="'photos/1'">
-            <img [src]="'https://picsum.photos/300/300'" />
-        </a>
-    </div>
-    <div class="image-container">
-        <a [routerLink]="'photos/1'">
-            <img [src]="'https://picsum.photos/300/300'" />
-        </a>
-    </div>
-    <div class="image-container">
-        <a [routerLink]="'photos/1'">
-            <img [src]="'https://picsum.photos/300/300'" />
-        </a>
-    </div>
-    <div class="image-container">
-        <a [routerLink]="'photos/1'">
-            <img [src]="'https://picsum.photos/300/300'" />
-        </a>
-    </div>
-    <div class="image-container">
-        <a [routerLink]="'photos/1'">
-            <img [src]="'https://picsum.photos/300/300'" />
+<section #photoContainer class="photos-container">
+    
+    <div class="image-container" *ngFor="let photo of photoList">
+        <a [routerLink]="['photos', photo.id]">
+            <img [src]="photo.download_url" />
         </a>
     </div>
 </section>
 
-<div class="loading">
+<div *ngIf="isLoading$ | async" class="loading" >
     <span>Loading...</span>
 </div>

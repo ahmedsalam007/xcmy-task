@@ -6,5 +6,4 @@ import { Component } from '@angular/core';
   styleUrls: ['./photo-details.component.scss']
 })
 export class PhotoDetailsComponent {
-
 }
