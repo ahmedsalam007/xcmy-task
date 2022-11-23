@@ -12,7 +12,7 @@ const routes: Route[] = [
   [
     { path: '', component:PhotoListComponent},
     { path: 'favorites', component: PhotoFavouritesComponent},
-    { path: 'photos/:id ', component: PhotoDetailsComponent}
+    { path: 'photos/:id', component: PhotoDetailsComponent}
   ]},
   
 ]

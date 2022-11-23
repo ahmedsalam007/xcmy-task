@@ -12,4 +12,8 @@ export class PhotoLibraryService {
   getPhotos(pageNumber: number){
     return this.http.get(`https://picsum.photos/v2/list?page=${pageNumber}&limit=6`).pipe(delay(4000))
   }
+
+  getPhotoById(id: number){
+    return this.http.get(`https://picsum.photos/id/${id}/200/300`).pipe(delay(4000))
+  }
 }

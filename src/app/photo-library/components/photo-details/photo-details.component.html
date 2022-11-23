@@ -1,6 +1,6 @@
 <div class="photo-details-container">
-    <div class="photo">
-        <img [src]="'https://picsum.photos/300/300'" />
+    <div *ngIf="url" class="photo">
+        <img [src]="url" />
     </div>
 
     <button class="remove-fav-btn">Remove from Favourites</button>
