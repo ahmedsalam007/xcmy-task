@@ -1,0 +1,26 @@
+.photos-container {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 2em;
+    margin: 3em;
+}
+
+.loading {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    & > span {
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        border: 1px solid blue;
+        background-color: aqua;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+}
+
+
