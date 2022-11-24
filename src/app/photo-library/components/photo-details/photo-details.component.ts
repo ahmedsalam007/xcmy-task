@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Configs } from '../../models/constants';
 import { PhotoLibraryService } from '../../services/photo-library.service';
 
 @Component({
@@ -9,11 +10,19 @@ import { PhotoLibraryService } from '../../services/photo-library.service';
 })
 export class PhotoDetailsComponent implements OnInit {
   url = '';
+  id: string = '';
   constructor(
-    private activatedRoute: ActivatedRoute){}
+    private activatedRoute: ActivatedRoute, 
+    private photoLibraryService: PhotoLibraryService,
+    private router: Router){}
 
   ngOnInit(): void{
-    const ID = this.activatedRoute.snapshot.params["id"];
-    this.url = `https://picsum.photos/id/${ID}/300/300`;
+    this.id = this.activatedRoute.snapshot.params["id"];
+    this.url = `${Configs.photosSrcUrl}/id/${this.id}/300/300`;
+  }
+
+  deletePhotoFromFavourites(){
+    this.photoLibraryService.deletePhotoFromFavourite(+this.id);
+    this.router.navigate(['../'+ Configs.favouritesPath]);
   }
 }

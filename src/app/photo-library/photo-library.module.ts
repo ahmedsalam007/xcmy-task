@@ -6,12 +6,14 @@ import { PhotoDetailsComponent } from './components/photo-details/photo-details.
 import { RouterModule, Route } from '@angular/router';
 import { PhotoLibraryComponent } from './components/photo-library/photo-library.component';
 import { PhotoFavouritesComponent } from './components/photo-favourites/photo-favourites.component';
+import { PhotoGalleryComponent } from './components/photo-gallery/photo-gallery.component';
+import { Configs } from './models/constants';
 
 const routes: Route[] = [
   { path: '', component: PhotoLibraryComponent, children: 
   [
-    { path: '', component:PhotoListComponent},
-    { path: 'favorites', component: PhotoFavouritesComponent},
+    { path: '', component:PhotoGalleryComponent},
+    { path: Configs.favouritesPath, component: PhotoFavouritesComponent},
     { path: 'photos/:id', component: PhotoDetailsComponent}
   ]},
   
@@ -20,10 +22,11 @@ const routes: Route[] = [
 @NgModule({
   declarations: [
     HeaderComponent,
-    PhotoListComponent,
     PhotoFavouritesComponent,
     PhotoDetailsComponent,
-    PhotoLibraryComponent
+    PhotoLibraryComponent,
+    PhotoGalleryComponent,
+    PhotoListComponent
   ],
   imports: [
     CommonModule,

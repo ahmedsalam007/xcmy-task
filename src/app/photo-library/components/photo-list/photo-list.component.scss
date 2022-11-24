@@ -8,8 +8,14 @@
 
 .image-container {
     & img {
-        width:25vw;
+        width: 25vw;
         height: 200px;
+    }
+
+    & img.selected {
+        padding: 2px;
+        border: 2px solid rgb(143, 203, 143);
+        border-radius: 5px;
     }
 }
 

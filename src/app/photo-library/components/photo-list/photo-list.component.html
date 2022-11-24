@@ -1,8 +1,8 @@
 <section #photoContainer class="photos-container">
     
     <div class="image-container" *ngFor="let photo of photoList">
-        <a [routerLink]="['photos', photo.id]">
-            <img [src]="photo.download_url" />
+        <a (click)="onClickPhoto.emit(photo)">
+            <img [src]="photo.download_url" [ngClass]="{'selected': checkIfFavouritePhoto(photo.id)}" />
         </a>
     </div>
 </section>
