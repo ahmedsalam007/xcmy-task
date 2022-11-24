@@ -21,15 +21,10 @@ export class PhotoListComponent implements OnInit , OnDestroy{
   constructor(private photoLibraryService: PhotoLibraryService, private activatedRoute: ActivatedRoute){}
 
   ngOnInit(): void {
-    const isFavourite = this.activatedRoute.snapshot.routeConfig?.path?.includes('favorites');
+    const isFavourite = !!this.activatedRoute.snapshot.routeConfig?.path?.includes('favorites');
     this.getPhotoList(this.pageNumber, isFavourite);
 
-    fromEvent(document,'scroll').pipe(debounceTime(Configs.debounceTimeInSeconds), takeUntil(this.destroy$)).subscribe(() => {
-      if(window.innerHeight + window.scrollY >= document.body.offsetHeight){
-        this.pageNumber += 1;
-        this.getPhotoList(this.pageNumber, isFavourite);
-      }
-    })
+    this.registerScrollEventListenter(isFavourite);
   }
 
   getPhotoList(pageNumber: number, isFavourite?: boolean){
@@ -39,8 +34,13 @@ export class PhotoListComponent implements OnInit , OnDestroy{
     })
   }
 
-  addToFavourite(selectedPhoto: Photo): void {
-    this.photoLibraryService.addPhotoToFavourites(selectedPhoto);
+  registerScrollEventListenter(isFavourite: boolean){
+    fromEvent(document,'scroll').pipe(debounceTime(Configs.debounceTimeInSeconds), takeUntil(this.destroy$)).subscribe(() => {
+      if(window.innerHeight + window.scrollY >= document.body.offsetHeight){
+        this.pageNumber += 1;
+        this.getPhotoList(this.pageNumber, isFavourite);
+      }
+    })
   }
 
   checkIfFavouritePhoto(id: number): boolean {
