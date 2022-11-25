@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { MatButtonModule } from '@angular/material/button';
 import { HeaderComponent } from './components/header/header.component';
 import { PhotoListComponent } from './components/photo-list/photo-list.component';
 import { PhotoDetailsComponent } from './components/photo-details/photo-details.component';
@@ -30,6 +31,7 @@ export const routes: Route[] = [
   ],
   imports: [
     CommonModule,
+    MatButtonModule,
     RouterModule.forChild(routes),
   ]
 })

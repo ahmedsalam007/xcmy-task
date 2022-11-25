@@ -16,15 +16,15 @@ export class PhotoListComponent implements OnInit , OnDestroy{
   photoList: Photo[] =[];
   pageNumber = 1;
   destroy$: Subject<boolean> = new Subject()
-
+  isFavourite = false;
   isLoading$: BehaviorSubject<boolean> = new BehaviorSubject(false);
   constructor(private photoLibraryService: PhotoLibraryService, private activatedRoute: ActivatedRoute){}
 
   ngOnInit(): void {
-    const isFavourite = !!this.activatedRoute.snapshot.routeConfig?.path?.includes('favorites');
-    this.getPhotoList(this.pageNumber, isFavourite);
+    this.isFavourite = !!this.activatedRoute.snapshot.routeConfig?.path?.includes('favorites');
+    this.getPhotoList(this.pageNumber, this.isFavourite);
 
-    this.registerScrollEventListenter(isFavourite);
+    this.registerScrollEventListenter(this.isFavourite);
   }
 
   

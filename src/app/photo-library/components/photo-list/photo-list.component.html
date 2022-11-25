@@ -5,7 +5,11 @@
             <img [src]="photo.download_url" [ngClass]="{'selected': checkIfFavouritePhoto(photo.id)}" />
         </a>
     </div>
+
+    
 </section>
+<p class="no-items" *ngIf="photoList.length == 0 && isFavourite">
+    There's no items here in favourites, go to photos </p>
 
 <div *ngIf="isLoading$ | async" class="loading" >
     <span>Loading...</span>
