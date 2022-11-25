@@ -9,7 +9,7 @@ import { PhotoFavouritesComponent } from './components/photo-favourites/photo-fa
 import { PhotoGalleryComponent } from './components/photo-gallery/photo-gallery.component';
 import { Configs } from './models/constants';
 
-const routes: Route[] = [
+export const routes: Route[] = [
   { path: '', component: PhotoLibraryComponent, children: 
   [
     { path: '', component:PhotoGalleryComponent},

@@ -27,12 +27,18 @@ export class PhotoListComponent implements OnInit , OnDestroy{
     this.registerScrollEventListenter(isFavourite);
   }
 
+  
   getPhotoList(pageNumber: number, isFavourite?: boolean){
     this.isLoading$.next(true);
     this.photoLibraryService.getPhotos(pageNumber, isFavourite).pipe(map(v => v as Photo[]), finalize(() => this.isLoading$.next(false))).subscribe(res => {
       this.photoList = isFavourite ? res : [...this.photoList, ...res];
     })
   }
+
+  clickPhotoHandler(photo: Photo){
+    this.onClickPhoto.emit(photo);
+  }
+
 
   registerScrollEventListenter(isFavourite: boolean){
     fromEvent(document,'scroll').pipe(debounceTime(Configs.debounceTimeInSeconds), takeUntil(this.destroy$)).subscribe(() => {

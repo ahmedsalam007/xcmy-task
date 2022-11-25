@@ -1,4 +1,5 @@
 // import { HttpClient } from "@angular/common/http";
+import { Component } from "@angular/core";
 import { of, Observable } from "rxjs";
 
 import { Photo } from "src/app/photo-library/models/photo.model";
@@ -23,3 +24,10 @@ export class PhotoLibraryMockService {
 
   isFavouritePhoto(id: number): boolean {return true }
 }
+
+
+@Component({
+  selector: 'app-photo-list',
+  template: ``,
+})
+export class PhotoListMockComponent {}

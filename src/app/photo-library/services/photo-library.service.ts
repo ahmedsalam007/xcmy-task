@@ -9,9 +9,11 @@ import { Photo } from '../models/photo.model';
 })
 export class PhotoLibraryService {
   favouritePhotoList: Photo[] =[];
-  constructor(private http:HttpClient) { 
-    this.favouritePhotoList =  JSON.parse(localStorage.getItem('favourite') || '');
-  }
+  constructor(private http:HttpClient) {
+    const result = localStorage.getItem('favourite');
+    if(result) 
+    this.favouritePhotoList =  JSON.parse(result);
+  } 
 
   getPhotos(pageNumber: number, isFavourite?: boolean){
     return isFavourite ?  of(this.favouritePhotoList) : this.http.get(`${Configs.photosSrcUrl}/v2/list?page=${pageNumber}&limit=6`).pipe(delay(Configs.delayInSeconds))

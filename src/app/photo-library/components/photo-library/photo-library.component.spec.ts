@@ -1,4 +1,7 @@
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/compiler';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { RouterTestingModule } from '@angular/router/testing';
+import { HeaderComponent } from '../header/header.component';
 
 import { PhotoLibraryComponent } from './photo-library.component';
 
@@ -8,7 +11,9 @@ describe('PhotoLibraryComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ PhotoLibraryComponent ]
+      declarations: [ PhotoLibraryComponent, HeaderComponent ],
+      imports:[RouterTestingModule],
+      schemas:[CUSTOM_ELEMENTS_SCHEMA]
     })
     .compileComponents();
 

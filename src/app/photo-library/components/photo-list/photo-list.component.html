@@ -1,7 +1,7 @@
 <section #photoContainer class="photos-container">
     
     <div class="image-container" *ngFor="let photo of photoList">
-        <a (click)="onClickPhoto.emit(photo)">
+        <a (click)="clickPhotoHandler(photo)">
             <img [src]="photo.download_url" [ngClass]="{'selected': checkIfFavouritePhoto(photo.id)}" />
         </a>
     </div>

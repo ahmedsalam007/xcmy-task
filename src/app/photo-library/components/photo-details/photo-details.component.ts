@@ -21,8 +21,8 @@ export class PhotoDetailsComponent implements OnInit {
     this.url = `${Configs.photosSrcUrl}/id/${this.id}/300/300`;
   }
 
-  deletePhotoFromFavourites(){
-    this.photoLibraryService.deletePhotoFromFavourite(+this.id);
+  deletePhotoFromFavourites(id: number){
+    this.photoLibraryService.deletePhotoFromFavourite(id);
     this.router.navigate(['../'+ Configs.favouritesPath]);
   }
 }
